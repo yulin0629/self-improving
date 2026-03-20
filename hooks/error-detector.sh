@@ -3,18 +3,18 @@
 # Detects Bash errors and injects additionalContext for the AI.
 # IMPORTANT: All output goes to stdout only (stderr = hook error in Claude Code).
 
-set -euo pipefail
+set -uo pipefail
 
-# Read stdin JSON
-INPUT=$(cat)
+# Read stdin JSON (redirect stderr to /dev/null globally to prevent hook errors)
+INPUT=$(cat) || exit 0
 
 # Extract a top-level field from the input JSON
 extract_field() {
   local field="$1"
   if command -v jq >/dev/null 2>&1; then
-    echo "$INPUT" | jq -r ".$field // empty"
+    echo "$INPUT" | jq -r ".$field // empty" 2>/dev/null || echo ""
   else
-    python3 -c "import sys,json; d=json.loads(sys.stdin.read()); v=d.get('$field',''); print(v if isinstance(v,str) else json.dumps(v))" <<< "$INPUT"
+    python3 -c "import sys,json; d=json.loads(sys.stdin.read()); v=d.get('$field',''); print(v if isinstance(v,str) else json.dumps(v))" <<< "$INPUT" 2>/dev/null || echo ""
   fi
 }
 
