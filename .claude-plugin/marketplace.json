@@ -1,0 +1,23 @@
+{
+  "name": "self-improving-local",
+  "owner": {
+    "name": "yulin0629",
+    "email": "yulin0629@gmail.com"
+  },
+  "metadata": {
+    "description": "Error detection hook + recurrence tracking via .learnings/"
+  },
+  "plugins": [
+    {
+      "name": "self-improving",
+      "source": "./",
+      "description": "Detects Bash errors and tracks recurring patterns via .learnings/. Complements /session-reflect with automatic, always-on error capture.",
+      "version": "1.0.0",
+      "author": {
+        "name": "yulin0629"
+      },
+      "license": "MIT",
+      "keywords": ["learning", "error-detection", "recurrence", "auto-memory"]
+    }
+  ]
+}
