@@ -1,5 +1,5 @@
 {
-  "description": "Error detection for Bash command failures",
+  "description": "Initialize .learnings/ on session start and detect Bash command failures",
   "hooks": {
     "SessionStart": [
       {

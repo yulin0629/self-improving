@@ -8,9 +8,11 @@ set -euo pipefail
 
 LEARNINGS_DIR=".learnings"
 
-if [ ! -d "$LEARNINGS_DIR" ]; then
-  mkdir -p "$LEARNINGS_DIR"
-  cp "${CLAUDE_PLUGIN_ROOT}/assets/ERRORS.md" "$LEARNINGS_DIR/"
-  cp "${CLAUDE_PLUGIN_ROOT}/assets/LEARNINGS.md" "$LEARNINGS_DIR/"
-  echo "Initialized $LEARNINGS_DIR/ from plugin templates"
-fi
+mkdir -p "$LEARNINGS_DIR"
+
+for template in ERRORS.md LEARNINGS.md; do
+  if [ ! -f "$LEARNINGS_DIR/$template" ]; then
+    cp "${CLAUDE_PLUGIN_ROOT}/assets/$template" "$LEARNINGS_DIR/"
+    echo "Copied $template to $LEARNINGS_DIR/"
+  fi
+done
