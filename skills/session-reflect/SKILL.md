@@ -1,5 +1,4 @@
 ---
-disable-model-invocation: true
 name: session-reflect
 description: Use when user says "回顧修正", "整理 feedback", "session reflect", or wants to review current session corrections and update skills, rules, or memory.
 ---
