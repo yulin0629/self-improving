@@ -1,18 +1,6 @@
 {
-  "description": "Initialize .learnings/ on session start and detect Bash command failures",
+  "description": "Detect Bash command failures and track recurring patterns",
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/init-learnings.sh\"",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
     "PostToolUseFailure": [
       {
         "matcher": "Bash",
